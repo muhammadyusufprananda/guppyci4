@@ -1,0 +1,159 @@
+body {
+    font-family: 'Sen', sans-serif;
+}
+
+a,
+p,
+li {
+    font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.S-top-bar {
+    background-color: #f5f5f5;
+}
+
+.S-top-bar a {
+    color: #484848;
+    margin-right: 15px;
+}
+
+.S-top-bar a i {
+    font-size: 20px;
+}
+
+.C-login {
+    padding-left: 15px;
+    border-left: 1px solid #484848;
+}
+
+.S-header img.C-logo {
+    width: 150px;
+}
+
+.S-header .C-nav a {
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #252525;
+    margin-right: 25px;
+}
+
+.S-header .C-nav a:hover {
+    color: #E43D4E;
+    transition: 250ms;
+}
+
+.S-rekomendasi .S-judul h1 {
+    font-weight: 700;
+}
+
+.S-rekomendasi .S-judul hr {
+    margin: 15px auto;
+    width: 100px;
+    border-bottom: 5px solid #E43D4E;
+    opacity: 100%;
+}
+
+.S-rekomendasi .S-konten .C-card img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.S-rekomendasi .S-konten .C-card a {
+    text-decoration: none;
+    color: #E43D4E;
+}
+
+.S-bottom-widget {
+    color: #636363;
+}
+
+.S-bottom-widget a:hover {
+    color: #E43D4E;
+}
+
+.S-bottom-widget .row {
+    background-color: #f5f5f5;
+    padding: 10px 120px;
+}
+
+.S-bottom-widget .C-logo {
+    width: 120px;
+}
+
+.S-footer .row {
+    background-color: #E43D4E;
+    color: white;
+    padding: 30px 120px;
+    font-weight: 700;
+}
+
+.S-post h1 {
+    color: #E43D4E;
+}
+
+.S-post p {
+    text-align: justify;
+}
+
+.S-login {
+    height: 90%;
+}
+
+.S-login .d-flex {
+    height: 100%;
+}
+
+.S-login-form {
+    color: white;
+    background-color: #E43D4E;
+    border-radius: 20px;
+}
+
+.S-login-form img {
+    width: 100px;
+}
+
+.S-admin .nav.nav-pills .nav-item .nav-link {
+    padding: 10px;
+    margin: 5px 0px;
+}
+
+.S-admin .nav.nav-pills .nav-item .nav-link.active {
+    background-color: #E43D4E;
+}
+
+.S-admin .nav.nav-pills .nav-item a.nav-link.active:hover {
+    color: white;
+}
+
+.S-admin .nav.nav-pills .nav-item a.nav-link:hover {
+    color: #E43D4E;
+}
+
+.S-admin .table tbody tr td {
+    vertical-align: middle;
+}
+
+.S-footer-login {
+    height: 10%;
+    background-color: #E43D4E;
+    color: white;
+}
+
+.S-footer-login .d-flex {
+    height: 100%;
+}
