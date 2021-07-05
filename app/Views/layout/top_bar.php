@@ -23,7 +23,7 @@
                   <li><a class="dropdown-item" href="/admin/profil">Profile</a></li>
                 <?php elseif(in_groups('user')): ?>
                   <li><a class="dropdown-item" href="/user">Profile</a></li>
-                  <li><a class="dropdown-item" href="/keranjang">Keranjang</a></li>
+                  <li><a class="dropdown-item" href="/user/keranjang">Keranjang</a></li>
                 <?php endif; ?>
                   <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a></li>
               </ul>
