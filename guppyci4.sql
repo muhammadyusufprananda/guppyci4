@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Jul 2021 pada 06.23
+-- Waktu pembuatan: 05 Jul 2021 pada 13.07
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -47,6 +47,14 @@ CREATE TABLE `auth_groups` (
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `auth_groups`
+--
+
+INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
+(1, 'superadmin', 'super admin.'),
+(2, 'user', 'regular user.');
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +66,15 @@ CREATE TABLE `auth_groups_permissions` (
   `permission_id` int(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `auth_groups_permissions`
+--
+
+INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
+(1, 1),
+(2, 2),
+(2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +85,14 @@ CREATE TABLE `auth_groups_users` (
   `group_id` int(11) UNSIGNED NOT NULL DEFAULT 0,
   `user_id` int(11) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `auth_groups_users`
+--
+
+INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
+(1, 4),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -84,6 +109,21 @@ CREATE TABLE `auth_logins` (
   `success` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `auth_logins`
+--
+
+INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
+(1, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 20:23:34', 1),
+(2, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 20:32:33', 1),
+(3, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 20:33:34', 1),
+(4, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 21:07:37', 1),
+(5, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 21:07:55', 1),
+(6, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 21:20:12', 1),
+(7, '::1', 'user@gmail.com', 5, '2021-07-04 21:21:58', 1),
+(8, '::1', 'user@gmail.com', 5, '2021-07-04 21:43:29', 1),
+(9, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-05 01:30:37', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +135,15 @@ CREATE TABLE `auth_permissions` (
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `auth_permissions`
+--
+
+INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
+(1, 'shoplist', 'manage shoplist.'),
+(2, 'profile', 'manage own profile info.'),
+(3, 'keranjang', 'manage own keranjang.');
 
 -- --------------------------------------------------------
 
@@ -184,7 +233,7 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-(1, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1625278417, 1);
+(2, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1625444681, 1);
 
 -- --------------------------------------------------------
 
@@ -196,6 +245,8 @@ CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(30) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `nohp` varchar(13) DEFAULT NULL,
   `password_hash` varchar(255) NOT NULL,
   `reset_hash` varchar(255) DEFAULT NULL,
   `reset_at` datetime DEFAULT NULL,
@@ -209,6 +260,14 @@ CREATE TABLE `users` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `username`, `alamat`, `nohp`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(4, 'fusuyufuyusu@yahoo.com', 'fusuyufuyusu', 'Indonesia', '0813462571', '$2y$10$KHch6EOn6r.uoXbIM2OCieKRMc.IbmY1dMvR3o/vJXRNGlMOuzb32', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-07-04 20:23:26', '2021-07-04 20:23:26', NULL),
+(5, 'user@gmail.com', 'sayausers', 'Jl. SM. Aminuddin Gg. Rambai No.006', '082247803061', '$2y$10$..1MOpOFQWlqG/9aUkVngu5y8K22D3nm8zE6Tzt7M56R/ByDQg2XK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-07-04 21:21:48', '2021-07-04 21:21:48', NULL);
 
 --
 -- Indexes for dumped tables
@@ -309,19 +368,19 @@ ALTER TABLE `auth_activation_attempts`
 -- AUTO_INCREMENT untuk tabel `auth_groups`
 --
 ALTER TABLE `auth_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_reset_attempts`
@@ -345,13 +404,13 @@ ALTER TABLE `ikan`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
