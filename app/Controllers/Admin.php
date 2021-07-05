@@ -6,10 +6,12 @@ use App\Models\AdminModel;
 
 class Admin extends BaseController
 {
-    protected $adminModel;
+    protected $adminModel, $db, $builder;
     public function __construct()
     {
-        $this->adminModel = new AdminModel(); 
+        $this->adminModel = new AdminModel();
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('users');
     }
     public function index()
     {
@@ -82,7 +84,7 @@ class Admin extends BaseController
             return redirect()->to('/admin/edit/'.$this->request->getVar('namaIkan'));
         }
         $fileGambar = $this->request->getFile('gambarIkan');
-        if ($fileGambar->getError() == 4) {
+            if ($fileGambar->getError() == 4) {
             $namaGambar = $this->request->getVar('gambarLama');
         } else {
             $namaGambar = $fileGambar->getRandomName();
@@ -99,5 +101,24 @@ class Admin extends BaseController
         ]);
         session()->setFlashdata('pesan-hijau', 'Data berhasil diubah.');
         return redirect()->to('/admin');
+    }
+    public function profil() {
+        $data['title'] = 'Profil';
+        $data['nav'] = 'profil';
+        $this->builder->where('users.id', user_id());
+        $query = $this->builder->get();
+        $data['user'] = $query->getRow();
+        // dd($data['user']);
+		return view('admin/profil', $data);
+    }
+    public function simpaneditprofil() {
+        $this->builder->where('users.id', user_id());
+        $this->builder->update([
+            'username' => $this->request->getVar('usernameUser'),
+            'alamat' => $this->request->getVar('alamatUser'),
+            'nohp' => $this->request->getVar('nohpUser'),
+        ]);
+        session()->setFlashdata('pesan-hijau', 'Data berhasil diubah.');
+        return redirect()->to('/admin/profil');
     }
 }

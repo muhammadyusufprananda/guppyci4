@@ -13,7 +13,24 @@
           <a href="#"><i class="bi-facebook"></i></a>
           <a href="#"><i class="bi-shop"></i></a>
           <!-- Bagian login -->
-          <a href="login.html" class="C-login"><i class="bi-person-circle me-2"></i>Login</a>
+          <?php if(logged_in()): ?>
+          <!-- Jika sudah login -->
+            <div class="dropdown d-inline">
+              <a class="btn btn-danger text-white dropdown-toggle p-0 px-1 mb-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi-person-circle me-2"></i><?= user()->username ?></a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <?php if(in_groups('superadmin')): ?>
+                  <li><a class="dropdown-item" href="/admin">Admin</a></li>
+                  <li><a class="dropdown-item" href="/admin/profil">Profile</a></li>
+                <?php elseif(in_groups('user')): ?>
+                  <li><a class="dropdown-item" href="/user">Profile</a></li>
+                  <li><a class="dropdown-item" href="/keranjang">Keranjang</a></li>
+                <?php endif; ?>
+                  <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a></li>
+              </ul>
+            </div>
+          <?php else: ?>
+            <a href="<?= base_url('login') ?>" class="C-login"><i class="bi-person-circle me-2"></i>Login</a>
+          <?php endif; ?>
         </div>
       </div>
     </div>

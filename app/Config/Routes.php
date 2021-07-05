@@ -34,8 +34,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
 $routes->get('/shop/(:segment)', 'Shop::detail/$1');
+$routes->get('/admin', 'Admin::index', ['filter' => 'role:superadmin']);
+$routes->get('/admin/index', 'Admin::index', ['filter' => 'role:superadmin']);
 $routes->delete('/admin/(:num)', 'Admin::hapus/$1');
 $routes->get('/admin/hapus/(:num)', 'Shop::detail/$1');
+// $routes->get('/admin/profil', 'Admin::index');
+$routes->get('/user', 'User::index');
 
 /*
  * --------------------------------------------------------------------
