@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jul 2021 pada 13.07
+-- Waktu pembuatan: 05 Jul 2021 pada 16.32
 -- Versi server: 10.4.19-MariaDB
--- Versi PHP: 8.0.7
+-- Versi PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -122,7 +122,13 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (6, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-04 21:20:12', 1),
 (7, '::1', 'user@gmail.com', 5, '2021-07-04 21:21:58', 1),
 (8, '::1', 'user@gmail.com', 5, '2021-07-04 21:43:29', 1),
-(9, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-05 01:30:37', 1);
+(9, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-05 01:30:37', 1),
+(10, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-05 06:11:38', 1),
+(11, '::1', 'user@user.com', NULL, '2021-07-05 06:20:17', 0),
+(12, '::1', 'sayauser', NULL, '2021-07-05 06:20:26', 0),
+(13, '::1', 'user@gmail.com', 5, '2021-07-05 06:20:48', 1),
+(14, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-05 08:46:54', 1),
+(15, '::1', 'user@gmail.com', 5, '2021-07-05 08:47:20', 1);
 
 -- --------------------------------------------------------
 
@@ -211,6 +217,19 @@ INSERT INTO `ikan` (`id`, `nama`, `slug`, `harga`, `gambar`, `stok`, `deskripsi`
 (17, 'Albino Blue Medusa', 'albino-blue-medusa', 350000, '1625119597_6364d1a4ccf538f6267e.jpg', 50, 'Albino Blue Medusa merupakan salah satu jenis guppy mata merah koleksi di Swasti Farm. Sama seperti namanya Albino Blue Medusa memiliki corak medusa, Medusa merupakan perkembangan awal dari galaxy. Memiliki sirip ekor dan dorsal yang cukup lebar berwarna biru membuat penampilannya sangat menawan.'),
 (18, 'Albino Flamingo Crown Tail', 'albino-flamingo-crown-tail', 300000, '1625119693_02e563c6f54e0a2f1c58.jpg', 50, 'Albino Flamingo Crown Tail adalah jenis guppy mata merah. Albino Flamingo Crown Tail  memiliki bentuk ekor seperti mahkota. Albino FlamingoCrown Tail memiliki warna merah di setengah bagian atas tubuhnya dan warna merah pada sirip ekornya.Perpaduan warna merah jenis ini cukup jarang ditemui, cocok untuk menambah koleksi ikan guppy peliharaan kamu di rumah.'),
 (19, 'Albino Full Gold', 'albino-full-gold', 250000, '1625119778_39b4b0a8812eb59e63c2.jpg', 100, 'Salah satu koleksi guppy mata merah yang ada di Swasti Farm. Seperti namanya strain ini mulai dari kepala hingga ekornya berwarna kuning keemasan. Warna kuning yang ada pada strain ini lebih cerah dibanding Full Gold bermata hitam.');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `keranjang`
+--
+
+CREATE TABLE `keranjang` (
+  `id_users` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `id_ikan` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL DEFAULT 1,
+  `total` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -341,6 +360,13 @@ ALTER TABLE `ikan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `keranjang`
+--
+ALTER TABLE `keranjang`
+  ADD KEY `id_users` (`id_users`),
+  ADD KEY `id_ikan` (`id_ikan`);
+
+--
 -- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
@@ -374,7 +400,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `auth_permissions`
