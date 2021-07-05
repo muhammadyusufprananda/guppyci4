@@ -8,7 +8,7 @@
                 <?= $this->include('layout/nav_admin') ?>
             </div>
             <div class="col-sm-9">
-                <h2>Profil</h2>
+                <h2>Profil Admin</h2>
                 <hr>
                 <?php if (session()->getFlashdata('pesan-hijau')) : ?>
                 <div class="my-2 alert alert-success">
