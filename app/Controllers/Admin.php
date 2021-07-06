@@ -30,9 +30,9 @@ class Admin extends BaseController
         ];
         return view('admin/tambah', $data);
     }
-    public function simpan() 
+    public function simpan()
     {
-        if(!$this->validate([
+        if (!$this->validate([
             'namaIkan' => 'required|is_unique[ikan.nama]'
         ])) {
             session()->setFlashdata('pesan-merah', 'Nama ikan sudah ada di Database.');
@@ -73,18 +73,17 @@ class Admin extends BaseController
         $ikanLama = $this->adminModel->getIkanByID($id);
         if ($ikanLama['nama'] == $this->request->getVar('namaIkan')) {
             $rule = 'required';
-        }
-        else {
+        } else {
             $rule = 'required|is_unique[ikan.nama]';
         }
-        if(!$this->validate([
+        if (!$this->validate([
             'namaIkan' => $rule
         ])) {
             session()->setFlashdata('pesan-merah', 'Nama ikan sudah ada di Database.');
-            return redirect()->to('/admin/edit/'.$this->request->getVar('namaIkan'));
+            return redirect()->to('/admin/edit/' . $this->request->getVar('namaIkan'));
         }
         $fileGambar = $this->request->getFile('gambarIkan');
-            if ($fileGambar->getError() == 4) {
+        if ($fileGambar->getError() == 4) {
             $namaGambar = $this->request->getVar('gambarLama');
         } else {
             $namaGambar = $fileGambar->getRandomName();
@@ -102,16 +101,17 @@ class Admin extends BaseController
         session()->setFlashdata('pesan-hijau', 'Data berhasil diubah.');
         return redirect()->to('/admin');
     }
-    public function profil() {
+    public function profil()
+    {
         $data['title'] = 'Profil';
         $data['nav'] = 'profil';
         $this->builder->where('users.id', user_id());
         $query = $this->builder->get();
         $data['user'] = $query->getRow();
-        // dd($data['user']);
-		return view('admin/profil', $data);
+        return view('admin/profil', $data);
     }
-    public function simpaneditprofil() {
+    public function simpaneditprofil()
+    {
         $this->builder->where('users.id', user_id());
         $this->builder->update([
             'username' => $this->request->getVar('usernameUser'),

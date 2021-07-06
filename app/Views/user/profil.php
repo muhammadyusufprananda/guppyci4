@@ -11,16 +11,16 @@
                 <h2>Profil</h2>
                 <hr>
                 <?php if (session()->getFlashdata('pesan-hijau')) : ?>
-                <div class="my-2 alert alert-success">
-                    <?= session()->getFlashdata('pesan-hijau') ?>
-                </div>
+                    <div class="my-2 alert alert-success">
+                        <?= session()->getFlashdata('pesan-hijau') ?>
+                    </div>
                 <?php elseif (session()->getFlashdata('pesan-merah')) : ?>
-                <div class="my-2 alert alert-danger">
-                    <?= session()->getFlashdata('pesan-merah') ?>
-                </div>
+                    <div class="my-2 alert alert-danger">
+                        <?= session()->getFlashdata('pesan-merah') ?>
+                    </div>
                 <?php endif; ?>
                 <form action="/user/simpanedit" method="post">
-                <?= csrf_field(); ?>
+                    <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="emailUser" class="form-label">Email</label>
                         <input type="text" class="form-control" id="emailUser" name="emailUser" value="<?= $user->email ?>" readonly>
@@ -43,5 +43,5 @@
         </div>
     </div>
 </section>
-      
+
 <?= $this->endSection(); ?>

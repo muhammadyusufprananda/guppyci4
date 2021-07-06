@@ -14,6 +14,13 @@
         <?php endif; ?>
     </li>
     <li class="nav-item">
+    <?php if($nav == 'pembelian'): ?>
+        <a class="nav-link active" aria-current="page" href="/user/pembelian">Pembelian</a>
+        <?php else: ?>
+        <a class="nav-link" aria-current="page" href="/user/pembelian">Pembelian</a>
+        <?php endif; ?>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url('logout') ?>">Logout</a>
     </li>
 </ul>

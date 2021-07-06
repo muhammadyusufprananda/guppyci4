@@ -2,28 +2,32 @@
 
 namespace App\Controllers;
 
+use App\Controllers\Shop;
+
 class User extends BaseController
 {
-    protected $db, $builder, $builderKeranjang;
+    protected $db, $builderUsers, $builderKeranjang, $builderCheckout;
     public function __construct()
     {
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('users');
+        $this->builderUsers = $this->db->table('users');
         $this->builderKeranjang = $this->db->table('keranjang');
+        $this->builderCheckout = $this->db->table('checkout');
+        $this->shop = new Shop();
     }
-	public function index()
-	{
+    public function index()
+    {
         $data['title'] = 'Profil';
         $data['nav'] = 'profil';
-        $this->builder->where('users.id', user_id());
-        $query = $this->builder->get();
+        $this->builderUsers->where('users.id', user_id());
+        $query = $this->builderUsers->get();
         $data['user'] = $query->getRow();
-		return view('user/profil', $data);
-	}
+        return view('user/profil', $data);
+    }
     public function simpanedit()
     {
-        $this->builder->where('users.id', user_id());
-        $this->builder->update([
+        $this->builderUsers->where('users.id', user_id());
+        $this->builderUsers->update([
             'username' => $this->request->getVar('usernameUser'),
             'alamat' => $this->request->getVar('alamatUser'),
             'nohp' => $this->request->getVar('nohpUser'),
@@ -33,14 +37,19 @@ class User extends BaseController
     }
     public function keranjang()
     {
-        $this->builderKeranjang->select('id_users, id_ikan, jumlah, nama, harga, total');
-        $this->builderKeranjang->join('users', 'users.id = keranjang.id_users');
-        $this->builderKeranjang->join('ikan', 'ikan.id = keranjang.id_ikan');
-        $this->builderKeranjang->where('keranjang.id_users', user_id());
-        $query = $this->builderKeranjang->get();
-        $data['keranjang'] = $query->getResult();
         $data['title'] = 'Keranjang';
         $data['nav'] = 'keranjang';
+        $data['keranjang'] = $this->shop->queryKeranjang();
         return view('user/keranjang', $data);
+    }
+    public function pembelian()
+    {
+        $this->builderCheckout->where('checkout.id_users', user_id());
+        $query = $this->builderCheckout->get();
+        $data['checkout'] = $query->getResult();
+        $data['keranjang'] = $this->shop->queryKeranjang(false);
+        $data['title'] = 'Pembelian';
+        $data['nav'] = 'pembelian';
+        return view('user/pembelian', $data);
     }
 }

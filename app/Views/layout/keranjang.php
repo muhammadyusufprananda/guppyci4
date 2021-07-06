@@ -41,7 +41,7 @@
             </tbody>
           </table>
           <div class="text-end">
-            <button class="btn btn-danger mt-3">Checkout</button>
+            <a class="btn btn-danger mt-3" href="/shop/checkout">Checkout</a>
           </div>
         </div>
       </section>
