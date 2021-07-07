@@ -30,6 +30,10 @@
                         <input type="text" class="form-control" id="usernameUser" name="usernameUser" value="<?= $user->username ?>" required>
                     </div>
                     <div class="mb-3">
+                        <label for="namauserUser" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="namauserUser" name="namauserUser" value="<?= $user->namauser ?>" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="alamatUser" class="form-label">Alamat</label>
                         <input type="text" class="form-control" id="alamatUser" name="alamatUser" value="<?= $user->alamat ?>">
                     </div>

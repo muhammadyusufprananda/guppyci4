@@ -38,6 +38,7 @@ $routes->get('/admin', 'Admin::index', ['filter' => 'role:superadmin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:superadmin']);
 $routes->delete('/admin/(:num)', 'Admin::hapus/$1');
 $routes->get('/admin/hapus/(:num)', 'Shop::detail/$1');
+$routes->get('/admin/pembelian/(:segment)', 'Admin::pembeliandetail/$1');
 $routes->get('/user', 'User::index');
 
 /*

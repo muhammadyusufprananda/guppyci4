@@ -11,12 +11,12 @@
                 <h2>Form Tambah Ikan</h2>
                 <hr>
                 <?php if (session()->getFlashdata('pesan-merah')) : ?>
-                <div class="my-2 alert alert-danger">
-                    <?= session()->getFlashdata('pesan-merah') ?>
-                </div>
+                    <div class="my-2 alert alert-danger">
+                        <?= session()->getFlashdata('pesan-merah') ?>
+                    </div>
                 <?php endif; ?>
                 <form action="/admin/simpan" method="post" enctype="multipart/form-data">
-                <?= csrf_field(); ?>
+                    <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="namaIkan" class="form-label">Nama Ikan</label>
                         <input type="text" class="form-control" id="namaIkan" name="namaIkan" autofocus required>
@@ -47,5 +47,5 @@
         </div>
     </div>
 </section>
-      
+
 <?= $this->endSection(); ?>

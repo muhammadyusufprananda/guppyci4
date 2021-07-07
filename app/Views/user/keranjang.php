@@ -8,8 +8,6 @@
                 <?= $this->include('layout/nav_user') ?>
             </div>
             <div class="col-sm-9">
-                <h2>Keranjang</h2>
-                <hr>
                 <?= $this->include('layout/keranjang'); ?>
             </div>
         </div>

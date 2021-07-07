@@ -57,20 +57,41 @@ class Shop extends BaseController
     }
     public function beli($id)
     {
+        if (user_id() == null) {
+            return redirect()->to('/login');
+        } elseif (empty($this->request->getVar())) {
+            return redirect()->to('/shop');
+        }
         $this->builderIkan->where('ikan.id', $id);
         $query = $this->builderIkan->get();
         $data['ikan'] = $query->getRow();
         $data['id_users'] = user_id();
-        $this->builderKeranjang->insert([
-            'id_ikan' => $data['ikan']->id,
-            'id_users' => $data['id_users'],
-            'jumlah' => $this->request->getVar('jumlahKeranjang'),
-            'total' => $this->request->getVar('jumlahKeranjang') * $data['ikan']->harga
-        ]);
-        return redirect()->to('/shop');
+        if ($data['ikan']->stok - $this->request->getVar('jumlahKeranjang') <= 0) {
+            session()->setFlashdata('pesan-merah', 'Stok tidak mencukupi.');
+            return redirect()->to('/shop/' . $data['ikan']->slug);
+        } else {
+            $this->builderKeranjang->insert([
+                'id_ikan' => $data['ikan']->id,
+                'id_users' => $data['id_users'],
+                'jumlah' => $this->request->getVar('jumlahKeranjang'),
+                'total' => $this->request->getVar('jumlahKeranjang') * $data['ikan']->harga
+            ]);
+            $this->builderIkan->where('ikan.id', $id)->update([
+                'stok' => $data['ikan']->stok - $this->request->getVar('jumlahKeranjang'),
+            ]);
+            return redirect()->to('/shop');
+        }
     }
     public function hapuskeranjang($id_users, $id_ikan)
     {
+        $this->builderIkan->where('ikan.id', $id_ikan);
+        $query = $this->builderIkan->get();
+        $data['ikan'] = $query->getRow();
+        $this->builderKeranjang->where("id_users = '" . $id_users . "' AND  id_ikan = '" . $id_ikan . "'");
+        $data['keranjang'] = $this->builderKeranjang->get()->getRow();
+        $this->builderIkan->where('ikan.id', $id_ikan)->update([
+            'stok' => $data['ikan']->stok + $data['keranjang']->jumlah,
+        ]);
         $this->builderKeranjang->where("id_users = '" . $id_users . "' AND  id_ikan = '" . $id_ikan . "'")->delete();
         return redirect()->to('shop/');
     }
@@ -88,20 +109,11 @@ class Shop extends BaseController
             'id_users' => user_id(),
             'kode' => $random,
             'total' => $total,
+            'id_status' => 1
         ]);
         $this->builderKeranjang->where("id_users = '" . user_id() . "' AND  kode_checkout IS NULL")->update([
             'kode_checkout' => $random,
         ]);
-        // dd($data['keranjang']);
-        // foreach ($data['keranjang'] as $k) {
-        //     if($k->kode_checkout === null) {
-        //         $this->builderKeranjang->update([
-        //             'kode_checkout' => $random,
-        //         ]);
-        //     } else {
-        //         continue;
-        //     }
-        // }
         return redirect()->to('/user/pembelian');
     }
 }

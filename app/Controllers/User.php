@@ -29,6 +29,7 @@ class User extends BaseController
         $this->builderUsers->where('users.id', user_id());
         $this->builderUsers->update([
             'username' => $this->request->getVar('usernameUser'),
+            'namauser' => $this->request->getVar('namauserUser'),
             'alamat' => $this->request->getVar('alamatUser'),
             'nohp' => $this->request->getVar('nohpUser'),
         ]);
@@ -44,9 +45,12 @@ class User extends BaseController
     }
     public function pembelian()
     {
+        $this->builderCheckout->join('status', 'status.id = checkout.id_status');
         $this->builderCheckout->where('checkout.id_users', user_id());
         $query = $this->builderCheckout->get();
         $data['checkout'] = $query->getResult();
+        $this->builderUsers->where('users.id', user_id());
+        $data['user'] = $this->builderUsers->get()->getRow();
         $data['keranjang'] = $this->shop->queryKeranjang(false);
         $data['title'] = 'Pembelian';
         $data['nav'] = 'pembelian';

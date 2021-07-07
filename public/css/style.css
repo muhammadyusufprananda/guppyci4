@@ -161,3 +161,13 @@ a {
 .iJumlah {
     width: 10%;
 }
+
+.cStatus {
+    font-size: 9px;
+}
+
+.cPenting {
+    background-color: #E43D4E;
+    color: white;
+    font-size: 13px;
+}

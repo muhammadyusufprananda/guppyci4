@@ -6,12 +6,15 @@ use App\Models\AdminModel;
 
 class Admin extends BaseController
 {
-    protected $adminModel, $db, $builder;
+    protected $adminModel, $db, $builderUsers, $builderCheckout, $builderKeranjang, $builderStatus;
     public function __construct()
     {
         $this->adminModel = new AdminModel();
         $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('users');
+        $this->builderUsers = $this->db->table('users');
+        $this->builderCheckout = $this->db->table('checkout');
+        $this->builderKeranjang = $this->db->table('keranjang');
+        $this->builderStatus = $this->db->table('status');
     }
     public function index()
     {
@@ -105,20 +108,60 @@ class Admin extends BaseController
     {
         $data['title'] = 'Profil';
         $data['nav'] = 'profil';
-        $this->builder->where('users.id', user_id());
-        $query = $this->builder->get();
+        $this->builderUsers->where('users.id', user_id());
+        $query = $this->builderUsers->get();
         $data['user'] = $query->getRow();
         return view('admin/profil', $data);
     }
     public function simpaneditprofil()
     {
-        $this->builder->where('users.id', user_id());
-        $this->builder->update([
+        $this->builderUsers->where('users.id', user_id());
+        $this->builderUsers->update([
             'username' => $this->request->getVar('usernameUser'),
+            'namauser' => $this->request->getVar('namauserUser'),
             'alamat' => $this->request->getVar('alamatUser'),
             'nohp' => $this->request->getVar('nohpUser'),
         ]);
         session()->setFlashdata('pesan-hijau', 'Data berhasil diubah.');
         return redirect()->to('/admin/profil');
+    }
+    public function pembelian()
+    {
+        $data['title'] = 'Pembelian';
+        $data['nav'] = 'pembelian';
+        $this->builderCheckout->join('users', 'users.id = checkout.id_users');
+        $this->builderCheckout->join('status', 'status.id = checkout.id_status');
+        $query = $this->builderCheckout->get();
+        $data['checkout'] = $query->getResult();
+        $this->builderKeranjang->join('ikan', 'ikan.id = keranjang.id_ikan');
+        $query = $this->builderKeranjang->get();
+        $data['keranjang'] = $query->getResult();
+        return view('admin/pembelian', $data);
+    }
+    public function hapuscheckout($kode)
+    {
+        $this->builderCheckout->where('checkout.kode', $kode)->delete();
+        return redirect()->to('admin/pembelian');
+    }
+    public function pembeliandetail($kode)
+    {
+        $data['title'] = 'Pembelian';
+        $data['nav'] = 'pembelian';
+        $this->builderCheckout->join('users', 'users.id = checkout.id_users');
+        $this->builderCheckout->join('status', 'status.id = checkout.id_status');
+        $this->builderCheckout->where('checkout.kode', $kode);
+        $query = $this->builderCheckout->get();
+        $data['checkout'] = $query->getRow();
+        $data['status'] = $this->builderStatus->get()->getResult();
+        return view('admin/detail', $data);
+    }
+    public function updatecheckout($kode)
+    {
+        $this->builderCheckout->where('checkout.kode', $kode);
+        $this->builderCheckout->update([
+            'id_status' => $this->request->getVar('idStatus'),
+        ]);
+        session()->setFlashdata('pesan-hijau', 'Data berhasil diubah.');
+        return redirect()->to('admin/pembelian');
     }
 }
