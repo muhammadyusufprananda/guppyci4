@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2021 at 09:54 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Waktu pembuatan: 24 Jul 2021 pada 09.14
+-- Versi server: 10.4.20-MariaDB
+-- Versi PHP: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_activation_attempts`
+-- Struktur dari tabel `auth_activation_attempts`
 --
 
 CREATE TABLE `auth_activation_attempts` (
@@ -38,7 +38,7 @@ CREATE TABLE `auth_activation_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_groups`
+-- Struktur dari tabel `auth_groups`
 --
 
 CREATE TABLE `auth_groups` (
@@ -48,7 +48,7 @@ CREATE TABLE `auth_groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `auth_groups`
+-- Dumping data untuk tabel `auth_groups`
 --
 
 INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
@@ -58,7 +58,7 @@ INSERT INTO `auth_groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_groups_permissions`
+-- Struktur dari tabel `auth_groups_permissions`
 --
 
 CREATE TABLE `auth_groups_permissions` (
@@ -67,7 +67,7 @@ CREATE TABLE `auth_groups_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `auth_groups_permissions`
+-- Dumping data untuk tabel `auth_groups_permissions`
 --
 
 INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
@@ -78,7 +78,7 @@ INSERT INTO `auth_groups_permissions` (`group_id`, `permission_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_groups_users`
+-- Struktur dari tabel `auth_groups_users`
 --
 
 CREATE TABLE `auth_groups_users` (
@@ -87,17 +87,18 @@ CREATE TABLE `auth_groups_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `auth_groups_users`
+-- Dumping data untuk tabel `auth_groups_users`
 --
 
 INSERT INTO `auth_groups_users` (`group_id`, `user_id`) VALUES
 (1, 4),
-(2, 5);
+(2, 5),
+(2, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_logins`
+-- Struktur dari tabel `auth_logins`
 --
 
 CREATE TABLE `auth_logins` (
@@ -110,7 +111,7 @@ CREATE TABLE `auth_logins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `auth_logins`
+-- Dumping data untuk tabel `auth_logins`
 --
 
 INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `success`) VALUES
@@ -140,12 +141,23 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (24, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-07 01:59:49', 1),
 (25, '::1', 'sayausers', NULL, '2021-07-07 02:43:34', 0),
 (26, '::1', 'user@gmail.com', 5, '2021-07-07 02:43:41', 1),
-(27, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-07 02:44:27', 1);
+(27, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-07 02:44:27', 1),
+(28, '::1', 'iniusers', NULL, '2021-07-10 12:41:41', 0),
+(29, '::1', 'iniusers', NULL, '2021-07-10 12:42:07', 0),
+(30, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-10 12:42:16', 1),
+(31, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-21 07:35:46', 1),
+(32, '::1', 'iniusers', NULL, '2021-07-21 08:03:30', 0),
+(33, '::1', 'iniusers', NULL, '2021-07-21 08:03:40', 0),
+(34, '::1', 'iniusers', NULL, '2021-07-21 08:03:55', 0),
+(35, '::1', 'iniuser', NULL, '2021-07-21 08:04:05', 0),
+(36, '::1', 'yusufprananda@mail.com', 6, '2021-07-21 08:04:43', 1),
+(37, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-21 08:07:59', 1),
+(38, '::1', 'fusuyufuyusu@yahoo.com', 4, '2021-07-21 08:19:47', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_permissions`
+-- Struktur dari tabel `auth_permissions`
 --
 
 CREATE TABLE `auth_permissions` (
@@ -155,7 +167,7 @@ CREATE TABLE `auth_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `auth_permissions`
+-- Dumping data untuk tabel `auth_permissions`
 --
 
 INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
@@ -166,7 +178,7 @@ INSERT INTO `auth_permissions` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_reset_attempts`
+-- Struktur dari tabel `auth_reset_attempts`
 --
 
 CREATE TABLE `auth_reset_attempts` (
@@ -181,7 +193,7 @@ CREATE TABLE `auth_reset_attempts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_tokens`
+-- Struktur dari tabel `auth_tokens`
 --
 
 CREATE TABLE `auth_tokens` (
@@ -195,7 +207,7 @@ CREATE TABLE `auth_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_users_permissions`
+-- Struktur dari tabel `auth_users_permissions`
 --
 
 CREATE TABLE `auth_users_permissions` (
@@ -206,7 +218,7 @@ CREATE TABLE `auth_users_permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `checkout`
+-- Struktur dari tabel `checkout`
 --
 
 CREATE TABLE `checkout` (
@@ -218,7 +230,7 @@ CREATE TABLE `checkout` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `checkout`
+-- Dumping data untuk tabel `checkout`
 --
 
 INSERT INTO `checkout` (`id`, `id_users`, `kode`, `total`, `id_status`) VALUES
@@ -227,7 +239,7 @@ INSERT INTO `checkout` (`id`, `id_users`, `kode`, `total`, `id_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ikan`
+-- Struktur dari tabel `ikan`
 --
 
 CREATE TABLE `ikan` (
@@ -241,20 +253,23 @@ CREATE TABLE `ikan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `ikan`
+-- Dumping data untuk tabel `ikan`
 --
 
 INSERT INTO `ikan` (`id`, `nama`, `slug`, `harga`, `gambar`, `stok`, `deskripsi`) VALUES
-(15, 'Albino Blue Grass', 'albino-blue-grass', 500000, '1625118604_477d6aad05dcc8baea26.jpg', 100, 'Albino Blue Grass memiliki perpaduan warna cantik dengan warna mata merah yang diakibatkan gen albino yang dimilikinya, Serta warna dasar badan yang berwarna putih dengan corak bintik pada badan hingga ujung ekornya yang melebar membentuk kipas yang berwarna biru terang. Membuat Albino Blue Grass membawa mood yang tenang jika diletakkan di ruangan anda.'),
-(16, 'Albino Blue Lace', 'albino-blue-lace', 350000, '1625119475_2269aca0d7fab0e001cc.jpg', 101, 'Termasuk sebagai salah satu koleksi guppy mata merah di Swasti Farm. Strain ini memiliki corak lace ditubuh hingga ekor deltanya, sentuhan warna biru transparan ini membuat tampilan fenotip cukup menawan dan elegan. Strain ini direkomendasikan bagi kamu yang sudah cukup memiliki pengalaman memelihara guppy bermata merah atau bagi para breeder professional.'),
-(17, 'Albino Blue Medusa', 'albino-blue-medusa', 350000, '1625119597_6364d1a4ccf538f6267e.jpg', 0, 'Albino Blue Medusa merupakan salah satu jenis guppy mata merah koleksi di Swasti Farm. Sama seperti namanya Albino Blue Medusa memiliki corak medusa, Medusa merupakan perkembangan awal dari galaxy. Memiliki sirip ekor dan dorsal yang cukup lebar berwarna biru membuat penampilannya sangat menawan.'),
-(18, 'Albino Flamingo Crown Tail', 'albino-flamingo-crown-tail', 300000, '1625119693_02e563c6f54e0a2f1c58.jpg', 48, 'Albino Flamingo Crown Tail adalah jenis guppy mata merah. Albino Flamingo Crown Tail  memiliki bentuk ekor seperti mahkota. Albino FlamingoCrown Tail memiliki warna merah di setengah bagian atas tubuhnya dan warna merah pada sirip ekornya.Perpaduan warna merah jenis ini cukup jarang ditemui, cocok untuk menambah koleksi ikan guppy peliharaan kamu di rumah.'),
-(19, 'Albino Full Gold', 'albino-full-gold', 250000, '1625119778_39b4b0a8812eb59e63c2.jpg', 100, 'Salah satu koleksi guppy mata merah yang ada di Swasti Farm. Seperti namanya strain ini mulai dari kepala hingga ekornya berwarna kuning keemasan. Warna kuning yang ada pada strain ini lebih cerah dibanding Full Gold bermata hitam.');
+(15, 'Albino Blue Grass', 'albino-blue-grass', 500000, '1626871172_912dcad5217622d141bd.jpeg', 100, 'Albino Blue Grass memiliki perpaduan warna cantik dengan warna mata merah yang diakibatkan gen albino yang dimilikinya, Serta warna dasar badan yang berwarna putih dengan corak bintik pada badan hingga ujung ekornya yang melebar membentuk kipas yang berwarna biru terang. Membuat Albino Blue Grass membawa mood yang tenang jika diletakkan di ruangan anda.'),
+(21, 'Red Grass', 'red-grass', 250000, '1626871316_e114e32a9d030722c48d.jpeg', 50, 'Ikan yang akan menemanimu.'),
+(22, 'Sky Red', 'sky-red', 250000, '1626871357_b74ac233950202d22677.jpeg', 100, 'Ikan yang akan menemanimu.'),
+(23, 'Rainbow Grass', 'rainbow-grass', 300000, '1626871404_73b7d5c1bb89211f0899.jpeg', 20, 'Ikan yang akan menemanimu.'),
+(24, 'Albino Full Platinum', 'albino-full-platinum', 500000, '1626871437_ddb3ff31bedd78748d0d.jpeg', 10, 'Ikan yang akan menemanimu.'),
+(25, 'Blue Grass', 'blue-grass', 100000, '1626871468_1ed4c2090253f194f2e6.jpeg', 150, 'Ikan yang akan menemanimu.'),
+(26, 'Black Moscov', 'black-moscov', 500000, '1626871512_7ba9d83067c25f36ddc5.jpeg', 20, 'Ikan yang akan menemanimu.'),
+(27, 'Sky Blue', 'sky-blue', 400000, '1626871556_1d2c8bda1bc15600806d.jpeg', 50, 'Ikan yang akan menemanimu.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `keranjang`
+-- Struktur dari tabel `keranjang`
 --
 
 CREATE TABLE `keranjang` (
@@ -266,7 +281,7 @@ CREATE TABLE `keranjang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `keranjang`
+-- Dumping data untuk tabel `keranjang`
 --
 
 INSERT INTO `keranjang` (`id_users`, `id_ikan`, `jumlah`, `total`, `kode_checkout`) VALUES
@@ -289,7 +304,7 @@ INSERT INTO `keranjang` (`id_users`, `id_ikan`, `jumlah`, `total`, `kode_checkou
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -303,7 +318,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
@@ -312,7 +327,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Struktur dari tabel `status`
 --
 
 CREATE TABLE `status` (
@@ -321,7 +336,7 @@ CREATE TABLE `status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `status`
+-- Dumping data untuk tabel `status`
 --
 
 INSERT INTO `status` (`id`, `nama`) VALUES
@@ -333,7 +348,7 @@ INSERT INTO `status` (`id`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -358,45 +373,46 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `namauser`, `alamat`, `nohp`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (4, 'fusuyufuyusu@yahoo.com', 'fusuyufuyusu', 'FF', 'Indonesia', '0813462571', '$2y$10$KHch6EOn6r.uoXbIM2OCieKRMc.IbmY1dMvR3o/vJXRNGlMOuzb32', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-07-04 20:23:26', '2021-07-04 20:23:26', NULL),
-(5, 'user@gmail.com', 'sayausers', 'Muhammad Yusuf Prananda', 'Jl. SM. Aminuddin Gg. Rambai No.006', '082247803061', '$2y$10$..1MOpOFQWlqG/9aUkVngu5y8K22D3nm8zE6Tzt7M56R/ByDQg2XK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-07-04 21:21:48', '2021-07-04 21:21:48', NULL);
+(5, 'user@gmail.com', 'sayausers', 'Muhammad Yusuf Prananda', 'Jl. SM. Aminuddin Gg. Rambai No.006', '082247803061', '$2y$10$..1MOpOFQWlqG/9aUkVngu5y8K22D3nm8zE6Tzt7M56R/ByDQg2XK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-07-04 21:21:48', '2021-07-04 21:21:48', NULL),
+(6, 'yusufprananda@mail.com', 'yusufprananda', 'Muhammad Yusuf Prananda', 'Jl. SM. Aminuddin', '0802010203010', '$2y$10$I6wyIpBFaHj6sq/C6RMRceCyMD9L39yb9n7hXU4.R8t2bG3UzKfe2', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-07-21 08:04:34', '2021-07-21 08:04:34', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `auth_activation_attempts`
+-- Indeks untuk tabel `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `auth_groups`
+-- Indeks untuk tabel `auth_groups`
 --
 ALTER TABLE `auth_groups`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `auth_groups_permissions`
+-- Indeks untuk tabel `auth_groups_permissions`
 --
 ALTER TABLE `auth_groups_permissions`
   ADD KEY `auth_groups_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `group_id_permission_id` (`group_id`,`permission_id`);
 
 --
--- Indexes for table `auth_groups_users`
+-- Indeks untuk tabel `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
   ADD KEY `auth_groups_users_user_id_foreign` (`user_id`),
   ADD KEY `group_id_user_id` (`group_id`,`user_id`);
 
 --
--- Indexes for table `auth_logins`
+-- Indeks untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
   ADD PRIMARY KEY (`id`),
@@ -404,19 +420,19 @@ ALTER TABLE `auth_logins`
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `auth_permissions`
+-- Indeks untuk tabel `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `auth_reset_attempts`
+-- Indeks untuk tabel `auth_reset_attempts`
 --
 ALTER TABLE `auth_reset_attempts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `auth_tokens`
+-- Indeks untuk tabel `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
   ADD PRIMARY KEY (`id`),
@@ -424,14 +440,14 @@ ALTER TABLE `auth_tokens`
   ADD KEY `selector` (`selector`);
 
 --
--- Indexes for table `auth_users_permissions`
+-- Indeks untuk tabel `auth_users_permissions`
 --
 ALTER TABLE `auth_users_permissions`
   ADD KEY `auth_users_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
 
 --
--- Indexes for table `checkout`
+-- Indeks untuk tabel `checkout`
 --
 ALTER TABLE `checkout`
   ADD PRIMARY KEY (`id`),
@@ -439,32 +455,32 @@ ALTER TABLE `checkout`
   ADD KEY `id_status` (`id_status`);
 
 --
--- Indexes for table `ikan`
+-- Indeks untuk tabel `ikan`
 --
 ALTER TABLE `ikan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `keranjang`
+-- Indeks untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
   ADD KEY `id_users` (`id_users`),
   ADD KEY `id_ikan` (`id_ikan`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status`
+-- Indeks untuk tabel `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -472,108 +488,108 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `auth_activation_attempts`
+-- AUTO_INCREMENT untuk tabel `auth_activation_attempts`
 --
 ALTER TABLE `auth_activation_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `auth_groups`
+-- AUTO_INCREMENT untuk tabel `auth_groups`
 --
 ALTER TABLE `auth_groups`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `auth_logins`
+-- AUTO_INCREMENT untuk tabel `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `auth_permissions`
+-- AUTO_INCREMENT untuk tabel `auth_permissions`
 --
 ALTER TABLE `auth_permissions`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `auth_reset_attempts`
+-- AUTO_INCREMENT untuk tabel `auth_reset_attempts`
 --
 ALTER TABLE `auth_reset_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `auth_tokens`
+-- AUTO_INCREMENT untuk tabel `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `checkout`
+-- AUTO_INCREMENT untuk tabel `checkout`
 --
 ALTER TABLE `checkout`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `ikan`
+-- AUTO_INCREMENT untuk tabel `ikan`
 --
 ALTER TABLE `ikan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `status`
+-- AUTO_INCREMENT untuk tabel `status`
 --
 ALTER TABLE `status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `auth_groups_permissions`
+-- Ketidakleluasaan untuk tabel `auth_groups_permissions`
 --
 ALTER TABLE `auth_groups_permissions`
   ADD CONSTRAINT `auth_groups_permissions_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_groups_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `auth_groups_users`
+-- Ketidakleluasaan untuk tabel `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
   ADD CONSTRAINT `auth_groups_users_group_id_foreign` FOREIGN KEY (`group_id`) REFERENCES `auth_groups` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_groups_users_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `auth_tokens`
+-- Ketidakleluasaan untuk tabel `auth_tokens`
 --
 ALTER TABLE `auth_tokens`
   ADD CONSTRAINT `auth_tokens_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `auth_users_permissions`
+-- Ketidakleluasaan untuk tabel `auth_users_permissions`
 --
 ALTER TABLE `auth_users_permissions`
   ADD CONSTRAINT `auth_users_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `auth_permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `auth_users_permissions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `checkout`
+-- Ketidakleluasaan untuk tabel `checkout`
 --
 ALTER TABLE `checkout`
   ADD CONSTRAINT `checkout_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`),

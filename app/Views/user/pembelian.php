@@ -16,9 +16,9 @@
                 </div>
                 <h5>Rekening Pembayaran:</h5>
                 <ul>
-                    <li>BNI:</li>
-                    <li>BRI:</li>
-                    <li>BCA:</li>
+                    <li>BNI: 0230312 (Machfud Amanullah)</li>
+                    <li>BRI: 1120310111 (Machfud Amanullah)</li>
+                    <li>BCA: 0192391488 (Machfud Amanullah)</li>
                 </ul>
                 <small>*Konfimasi pembayaran anda dengan mengklik 'Belum Konfimasi' kemudian mengirimkan bukti pembayaran dan kode pembayaran.</small><br>
                 <small>*Proses status pembelian: Belum bayar -> Sudah bayar -> Dikirim -> Diterima.</small>
